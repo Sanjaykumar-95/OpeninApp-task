@@ -50,7 +50,7 @@ const Login = () => {
                             </div>
                             <div className="login-options" style={{paddingBottom: '20px',paddingTop:'10px'}}>
                                 <div className="row">
-                                    <div className="col-md-7">
+                                    <div className="col-md-6">
                                         <GoogleLogin
                                             onSuccess={handleLoginSuccess}
                                             onError={() => {
@@ -58,9 +58,9 @@ const Login = () => {
                                             }}
                                         />
                                     </div>
-                                    <div className="col-md-5">
+                                    <div className="col-md-6">
                                         <div className="apple-login" style={{color:'grey',backgroundColor:'white', borderRadius:'20px',padding:'5px'}}>
-                                            <AiFillApple style={{fontSize:'25px'}}/> Sign with Apple
+                                            <AiFillApple style={{fontSize:'25px'}}/> Signin with Apple
                                         </div>
                                     </div>
                                 </div>

@@ -48,11 +48,7 @@ const DashBoard = () => {
         }
 
         const saveDetails = () => {
-            // Update the profile details here
-            // For now, let's just log the entered details
             console.log('Profile Details:', enteredDetails);
-        
-            // Close the popup modal
             setPop(false);
           };
 
