@@ -243,7 +243,7 @@ const DashBoard = () => {
                             </div>
                         </div>
 
-                        <div className="chart-body" style={{width:'100%', padding:'20px',height:'400px',marginTop:'-10px'}}>
+                        <div className="chart-body" style={{width:'100%', padding:'20px',height:'530px',marginTop:'-10px'}}>
                             <ResponsiveContainer width="100%" height={getChartHeight()}>
                                 <BarChart data={data}>
                                     <CartesianGrid strokeDasharray="3 3" />
