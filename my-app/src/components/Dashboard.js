@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import { TbCalendarTime } from 'react-icons/tb';
@@ -12,9 +12,20 @@ import { LuUsers2 } from 'react-icons/lu';
 import { PiBagSimple } from 'react-icons/pi';
 import { HiUserCircle } from 'react-icons/hi';
 import { BiLogoGmail } from 'react-icons/bi';
+import { RxDotFilled } from 'react-icons/rx';
+import { GiExitDoor } from 'react-icons/gi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
-import { AiOutlinePlusCircle, AiOutlineBell } from 'react-icons/ai';
+import { AiOutlinePlusCircle, AiOutlineBell, AiOutlineMenu } from 'react-icons/ai';
 
+
+
+function getChartHeight() {
+    if (window.innerWidth <= 320) {
+      return 190;
+    } else {
+      return 300;
+    }
+  }
 
 const DashBoard = () => {
 
@@ -52,56 +63,133 @@ const DashBoard = () => {
             setPop(false);
           };
 
+          const [menuVisible, setMenuVisible] = useState(true);
+          const [isMenuListOpen, setIsMenuListOpen] = useState(true);
+          const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+          const toggleMenu = () => {
+            setIsDropdownOpen(!isDropdownOpen);
+          };
+
+          
+
+            useEffect(() => {
+            const handleResize = () => {
+                if (window.innerWidth <= 426) {
+                setIsMenuListOpen(false);
+                setMenuVisible(false);
+                } else {
+                setMenuVisible(true);
+                }
+            };
+
+            handleResize();
+            window.addEventListener('resize', handleResize);
+            return () => {
+                window.removeEventListener('resize', handleResize);
+            };
+            }, []);
 
     return (
         <div className='container-fluid' style={{backgroundColor:'#F8FAFF'}}>
             <div className='row'>
-                <div className='col-md-2' style={{backgroundColor:'#4285F4',borderRadius:'20px'}}>
-                    <div className='Side-menu'>
-                        <div className='menu'>
-                            <div className='menu-title'>Board.</div>
-                            <div className='menu-list'>
-                                <div className='List'>
-                                    <ul>
-                                        <li>
-                                            <a href='#'><LuPieChart/> Dashboard</a>
-                                        </li>
-                                        <li>
-                                            <a href='#'><BsTags/> Transactions</a>
-                                        </li>
-                                        <li>
-                                            <a href='#'><TbCalendarTime/> Shedules</a>
-                                        </li>
-                                        <li>
-                                            <a href='#'><BiUserCircle/> Users</a>
-                                        </li>
-                                        <li>
-                                            <a href='#'><FiSettings/> Settings</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className='menu-footer'>
+                <div className='col-md-2' style={{ backgroundColor: '#4285F4', borderRadius: '20px' }}>
+                {window.innerWidth > 426 && (
+                    <div className="Side-menu">
+                    <div className="menu">
+                        <div className="menu-title">
+                            Board.
+                        </div>
+                        <div className="menu-list" style={{ display: menuVisible ? 'block' : 'none' }}>
+                            <div className="List">
                                 <ul>
                                     <li>
-                                        <a href='#'>Help</a>
+                                        <a href="#"><LuPieChart /> Dashboard</a>
                                     </li>
                                     <li>
-                                        <a href='#'>Contact Us</a>
+                                        <a href="#"><BsTags /> Transactions</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><TbCalendarTime /> Schedules</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><BiUserCircle /> Users</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><FiSettings /> Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="/"><GiExitDoor /> Logout</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
+
+                        <div className="menu-footer">
+                        <ul>
+                            <li>
+                            <a href="#">Help</a>
+                            </li>
+                            <li>
+                            <a href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                        </div>
                     </div>
+                    </div>
+                )}
+                {window.innerWidth <= 426 && (
+                    <div className="menu-mobile" style={{marginBottom:'10px'}}>
+                        <div className="row">
+                        <div className="col-md-3" style={{ color: 'white' }} onClick={toggleMenu}>
+                            <AiOutlineMenu style={{ fontSize: '26px', fontWeight: 'bold' }} />
+                        </div>
+
+                        {isDropdownOpen && (
+                            <div className="dropdown-menu" style={{position:'relative',marginTop:'100px',display:'contents'}}>
+                                <ul style={{color:'white'}}>
+                                <li>
+                                    <a href="#"><LuPieChart /> Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="#"><BsTags /> Transactions</a>
+                                </li>
+                                <li>
+                                    <a href="#"><TbCalendarTime /> Schedules</a>
+                                </li>
+                                <li>
+                                    <a href="#"><BiUserCircle /> Users</a>
+                                </li>
+                                <li>
+                                    <a href="#"><FiSettings /> Settings</a>
+                                </li>
+                                <li>
+                                    <a href="/"><GiExitDoor /> Logout</a>
+                                </li>
+                                </ul>
+                            </div>
+                        )}
+
+                        <div className="col-md-5">
+                            <div
+                            className="menu-title-mobile"
+                            style={{fontSize: '25px', fontWeight: 'bold', color: 'white',position:'fixed',top:'0',left:'40%'}}
+                            >
+                            Board.
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    )}
                 </div>
 
 
                 <div className='col-md-10'>
                     <div className='dashboard-title'>
                         <div className='row'>
-                            <div className='col-md-4' style={{paddingTop:'5px',float:'left'}}>
+                            <div className='col-md-4' style={{paddingTop:'5px',float:'left',color:'black'}}>
                                 Dashboard
                             </div>
+
                             <div className='col-md-3'></div>
                             <div className='col-md-5' style={{paddingTop:'5px', textAlign:'right'}}>
                                 <div className='row'>
@@ -109,8 +197,8 @@ const DashBoard = () => {
                                         <input type='text' placeholder='Search...' className='form-control'/>
                                     </div>
                                     <div className='col-md-3' style={{display:'flex',justifyContent:'space-between'}}>
-                                        <AiOutlineBell/>
-                                        <HiUserCircle />
+                                        <AiOutlineBell style={{color:'black'}}/>
+                                        <HiUserCircle style={{color:'black'}}/>
                                     </div>
                                 </div>
                             </div>
@@ -148,16 +236,16 @@ const DashBoard = () => {
                                 <h2 style={{fontSize:'18px'}}>Activity</h2>
                                 <h4 style={{fontSize:'14px',color:'grey'}}>May-June 2024</h4>
                             </div>
-                            <div className='chart-head-right' style={{padding:'20px',float:'right'}}>
+                            <div className='chart-head-right' style={{float:'right'}}>
                                 <ul style={{display:'flex',listStyleType:'none'}}>
-                                    <li style={{marginRight:'25px'}}><span style={{backgroundColor:'rgb(136, 132, 216)',color:'rgb(136, 132, 216)',borderRadius:'50%'}}>......</span>Guest</li>
-                                    <li><span style={{backgroundColor:'rgb(130, 202, 157)',color:'rgb(130, 202, 157)',borderRadius:'50%'}}>......</span>User</li>
+                                    <li style={{marginRight:'25px'}}><span style={{color:'rgb(136, 132, 216)',fontSize:'30px'}}><RxDotFilled /></span>Guest</li>
+                                    <li className='bar-graph-user-name'><span style={{color:'rgb(130, 202, 157)',fontSize:'30px'}}><RxDotFilled /></span>User</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div className="chart-body" style={{width:'100%', padding:'30px',height:'400px'}}>
-                            <ResponsiveContainer width="100%" height={300}>
+                            <ResponsiveContainer width="100%" height={getChartHeight()}>
                                 <BarChart data={data}>
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="name" />
@@ -171,14 +259,14 @@ const DashBoard = () => {
                     </div>
 
                     <div className='last-row' style={{marginBottom:'20px'}}>
-                        <div className='row' style={{marginLeft:'0',marginRight:'0'}}>
+                        <div className='row' style={{marginLeft:'0',marginRight:'0',display:'flex'}}>
 
-                            <div className='col-md-5' style={{boxShadow:'0px 2px 11px 0 grey',borderRadius:'20px',padding:'20px'}}>
+                            <div className='col-md-5' style={{boxShadow:'0px 2px 11px 0 grey',borderRadius:'20px',padding:'20px',display:'flex',flexWrap:'wrap'}}>
                                 <div className='last-row-title'>
-                                    <b style={{float:'left'}}>Top Products</b>
-                                    <h6 style={{float:'right',color:'grey'}}>May - june 2023</h6>
+                                    <b className='last-row-title-name'>Top Products</b>
+                                    <h6 className='last-row-title-name' style={{fontSize:'14px',color:'grey'}}>May - june 2023</h6>
                                 </div>
-                                <div className='last-row-body row' style={{width: '100%'}}>
+                                <div className='last-row-body row' style={{width: '100%',flex:'1 0 140px'}}>
 
                                     <div className='Pi-chart col-md-5'>
                                         <ResponsiveContainer width="100%" height={180}>
@@ -225,8 +313,8 @@ const DashBoard = () => {
 
                             <div className='col-md-1'></div>
                             <div className='col-md-1'></div>
-
-                            <div className="profile-details col-md-5" style={{ boxShadow: '0px 2px 11px 0 grey', borderRadius: '20px', padding: '20px', display: 'grid', placeItems: 'center' }}>
+                            <br></br>
+                            <div className="profile-details col-md-5">
                                 {enteredDetails.name ? (
                                 <div className='details-entered' style={{textAlign:'center'}}>
                                     <h2>{enteredDetails.name}</h2>

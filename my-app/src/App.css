@@ -1,59 +1,103 @@
-*{
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-.menu-title{
-  color: white;
+
+/* Common styles */
+.menu-title {
   font-size: 30px;
   font-weight: bold;
   padding-top: 30px;
   padding-bottom: 35px;
   text-align: center;
+  color: white;
 }
 
-.menu-list ul{
+@media screen and (max-width: 428px) {
+  .menu-title {
+    font-size: 25px;
+    font-weight: bold;
+  } 
+}
+
+.menu-list ul {
   list-style-type: none;
 }
-.List{
+
+.List {
   margin-left: 70px;
 }
-.menu-list ul li{
+
+.menu-list ul li {
   margin-top: 20px;
-  margin-left: -54px;
+  margin-left: -64px;
 }
-.menu-list ul li a{
+
+@media screen and (max-width: 769px) {
+  .menu-list ul li {
+    margin-top: 20px;
+    margin-left: -95px;
+  } 
+}
+
+.menu-list ul li a {
   color: white;
   text-decoration: none;
 }
 
-.menu-footer{
+.menu-footer {
   position: absolute;
   bottom: 0;
 }
 
-.menu-footer ul{
+.menu-footer ul {
   list-style-type: none;
   padding: 20px;
   margin-left: 20px;
 }
-.menu-footer ul li{
+
+@media screen and (max-width: 769px) {
+  .menu-footer ul {
+    margin-left: 0px;
+  } 
+}
+
+.menu-footer ul li {
   margin-top: 15px;
 }
-.menu-footer ul li a{
+
+.menu-footer ul li a {
   color: white;
   text-decoration: none;
 }
 
-.dashboard-title{
+
+
+/* toogle menu */
+
+.dropdown-menu ul li{
+  list-style-type: none;
+  margin-top: 10px;
+}
+.dropdown-menu ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+
+.dashboard-title {
   font-weight: bold;
   font-size: 30px;
+  color: white;
 }
 
-.boxes{
+.boxes {
   display: flex;
+  flex-wrap: wrap;
 }
 
-.box{
+.box {
   padding: 20px;
   margin: 20px;
   border-radius: 20px;
@@ -62,28 +106,26 @@
   color: black;
   border-color: grey;
   box-shadow: 0px 2px 11px 0 grey;
+  flex: 1 0 140px;
 }
 
-.box-title{
+.box-title {
   font-size: 11px;
   font-weight: 400;
 }
-.box-value{
+
+.box-value {
   font-weight: bold;
   font-size: 21px;
 }
 
-.last-row{
-  padding-top:20px;
+.last-row {
+  padding-top: 20px;
 }
-
-
-
-/* Add this CSS to your stylesheet */
 
 /* Modal Styles */
 .modal {
-  display: none; /* Hide the modal by default */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -112,28 +154,114 @@
   cursor: pointer;
 }
 
-/* Loin Page */
-.login-left{
-    position: relative;
-    background-color: #3498db;
-    overflow: hidden;
-    border-bottom-right-radius: 10% 100%;
+.profile-details {
+  box-shadow: 0px 2px 11px 0 grey;
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  place-items: center;
 }
 
-.contact-profiles{
+/* Media query for screens narrower than 768px */
+@media (max-width: 426px) {
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.bar-graph-user-name{
+  margin-right: 15px;
+}
+
+@media  (max-width: 321px) {
+  .bar-graph-user-name{
+    margin-right: 10px;
+  }
+}
+
+
+
+/* Login Page */
+.login-left {
+  position: relative;
+  background-color: #3498db;
+  overflow: hidden;
+  border-bottom-right-radius: 10% 100%;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.login-left .logo {
+  text-align: left;
+}
+
+.login-left .Title-name {
+  display: grid;
+  place-items: center;
+  font-size: 62px;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.login-left .contact-profiles {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top:20px;
+  padding-top: 20px;
+  position: absolute;
   bottom: 0;
+  width: 100%;
+  padding-bottom: 20px;
 }
 
-.icons{
-  margin-right: 20px;
+.login-left .icons {
+  margin: 0 20px;
   font-size: 35px;
 }
 
-/* Add this CSS code to your stylesheet or inline styles */
+.contact-profiles-mobile{
+  display: flex;
+  justify-content: center;
+}
+
+.icons-mobile{
+  margin-left: 30px;
+}
+
+/* Last row */
+.last-row-title-name{
+  float: left;
+}
+
+.last-row-title-date{
+  float: right;
+  color: grey;
+}
+
+
+@media (max-width: 768px) {
+  .last-row-title-name {
+    position: relative;
+    float: none;
+    margin-left: 48px;
+    font-size: 20px;
+  }
+  .last-row-title-date {
+    position: relative;
+    float: none;
+    margin-left: 65px;
+    font-size: 10px;
+  }
+}
+
+
+
+
+
+/* Common Styles */
 .main {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -161,7 +289,7 @@
   align-items: center;
 }
 
-.popup-labels{
+.popup-labels {
   margin-top: 10px;
   font-weight: 500;
 }
