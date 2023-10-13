@@ -235,15 +235,15 @@ const DashBoard = () => {
                                 <h2 style={{fontSize:'18px'}}>Activity</h2>
                                 <h4 style={{fontSize:'14px',color:'grey'}}>May-June 2024</h4>
                             </div>
-                            <div className='chart-head-right' style={{float:'right'}}>
-                                <ul style={{display:'flex',listStyleType:'none',position:'relative',top:'-79px'}}>
+                            <div className='chart-head-right-mobile' style={{float:'right'}}>
+                                <ul style={{display:'flex',listStyleType:'none'}}>
                                     <li style={{marginRight:'25px'}}><span style={{color:'rgb(136, 132, 216)',fontSize:'30px'}}><RxDotFilled /></span>Guest</li>
                                     <li className='bar-graph-user-name'><span style={{color:'rgb(130, 202, 157)',fontSize:'30px'}}><RxDotFilled /></span>User</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div className="chart-body" style={{width:'100%', padding:'20px',height:'530px',marginTop:'-10px'}}>
+                        <div className="chart-body" style={{width:'100%', padding:'20px',height:'400px',marginTop:'-10px'}}>
                             <ResponsiveContainer width="100%" height={getChartHeight()}>
                                 <BarChart data={data}>
                                     <CartesianGrid strokeDasharray="3 3" />

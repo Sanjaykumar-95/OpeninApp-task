@@ -241,6 +241,13 @@
   color: grey;
 }
 
+@media (max-width: 465px) {
+  .chart-head-right-mobile{
+    position: relative;
+    top: -79px;
+  }
+}
+
 
 @media (max-width: 768px) {
   .last-row-title-name {
