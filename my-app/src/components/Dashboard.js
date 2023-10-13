@@ -21,7 +21,7 @@ import { AiOutlinePlusCircle, AiOutlineBell, AiOutlineMenu } from 'react-icons/a
 
 function getChartHeight() {
     if (window.innerWidth <= 320) {
-      return 190;
+      return 160;
     } else {
       return 300;
     }
@@ -172,8 +172,7 @@ const DashBoard = () => {
                         <div className="col-md-5">
                             <div
                             className="menu-title-mobile"
-                            style={{fontSize: '25px', fontWeight: 'bold', color: 'white',position:'fixed',top:'0',left:'40%'}}
-                            >
+                            style={{fontSize: '25px', fontWeight: 'bold', color: 'white',position:'fixed',top:'0',left:'40%'}}>
                             Board.
                             </div>
                         </div>
@@ -237,14 +236,14 @@ const DashBoard = () => {
                                 <h4 style={{fontSize:'14px',color:'grey'}}>May-June 2024</h4>
                             </div>
                             <div className='chart-head-right' style={{float:'right'}}>
-                                <ul style={{display:'flex',listStyleType:'none'}}>
+                                <ul style={{display:'flex',listStyleType:'none',position:'relative',top:'-79px'}}>
                                     <li style={{marginRight:'25px'}}><span style={{color:'rgb(136, 132, 216)',fontSize:'30px'}}><RxDotFilled /></span>Guest</li>
                                     <li className='bar-graph-user-name'><span style={{color:'rgb(130, 202, 157)',fontSize:'30px'}}><RxDotFilled /></span>User</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div className="chart-body" style={{width:'100%', padding:'30px',height:'400px'}}>
+                        <div className="chart-body" style={{width:'100%', padding:'20px',height:'400px',marginTop:'-10px'}}>
                             <ResponsiveContainer width="100%" height={getChartHeight()}>
                                 <BarChart data={data}>
                                     <CartesianGrid strokeDasharray="3 3" />
@@ -255,7 +254,7 @@ const DashBoard = () => {
                                     <Bar dataKey="valueB" fill="#82ca9d" name="Dataset B" />   
                                 </BarChart>
                             </ResponsiveContainer>
-                        </div>
+                        </div> 
                     </div>
 
                     <div className='last-row' style={{marginBottom:'20px'}}>
