@@ -266,6 +266,25 @@
 
 
 
+/* Google login */
+.google-login-button {
+  background-color: white;
+  color: grey;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+  /* .google-login-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  } */
+/* 
+.google-login-text {
+  font-size: 16px;
+} */
+
+
+
 
 
 /* Common Styles */

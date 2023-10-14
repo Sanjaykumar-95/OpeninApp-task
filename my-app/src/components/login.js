@@ -1,7 +1,7 @@
 import React from "react";
 import { BsGithub, BsDiscord } from 'react-icons/bs';
 import { AiFillTwitterCircle, AiFillLinkedin,AiFillApple } from 'react-icons/ai';
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin,useGoogleLogin  } from '@react-oauth/google';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -10,6 +10,10 @@ const Login = () => {
     const handleLoginSuccess = () => {
         navigate('/dashboard');
     };
+
+    const login = useGoogleLogin({
+        onSuccess: tokenResponse => console.log(tokenResponse),
+      });
 
     return(
         <div className="Login-signUp" style={{backgroundColor:'#F8FAFF'}}>
@@ -42,7 +46,7 @@ const Login = () => {
                         </div>
 
                         <div className="col-md-7" style={{display:'grid',placeItems:'center'}}>
-                            <div className="login-form">
+                            <div className="login-form" style={{width:'49%'}}>
                                 <div className="form-title" style={{fontWeight:'bold',fontSize:'36px'}}>
                                     Sign In
                                 </div>
@@ -51,17 +55,21 @@ const Login = () => {
                                 </div>
                                 <div className="login-options" style={{paddingBottom: '20px',paddingTop:'10px'}}>
                                     <div className="row">
-                                        <div className="col-md-6">
-                                            <GoogleLogin
+                                        <div className="col-md-6 google-login-button" onClick={() => login()}>
+                                            {/* <GoogleLogin
                                                 onSuccess={handleLoginSuccess}
                                                 onError={() => {
                                                 console.log('Login Failed');
                                                 }}
-                                            />
+                                            /> */}
+
+                                            <span className="google-login-icon" style={{fontSize:'20px',fontWeight:'bold'}}>G</span>
+                                            <span className="google-login-text"> Sign in with Google</span>
+
                                         </div>
                                         <div className="col-md-6">
-                                            <div className="apple-login" style={{color:'grey',backgroundColor:'white', borderRadius:'20px',padding:'5px'}}>
-                                                <AiFillApple style={{fontSize:'25px'}}/> Signin with Apple
+                                            <div className="apple-login" style={{color:'grey',backgroundColor:'white', borderRadius:'20px',padding:'5   px'}}>
+                                                <AiFillApple style={{fontSize:'20px'}}/> Sign in with Apple
                                             </div>
                                         </div>
                                     </div>
@@ -134,13 +142,17 @@ const Login = () => {
 
                                 <div className="login-options" style={{paddingBottom: '20px',paddingTop:'10px',textAlign:'center'}}>
                                     <div className="row">
-                                        <div className="col-md-6" style={{textAlign:'center',width:'100%'}}>
-                                            <GoogleLogin
+                                    <div className="col-md-6 google-login-button-mobile" onClick={() => login()} style={{backgroundColor:'white',borderRadius:'20px',color:'grey',padding:'5px'}}>
+                                            {/* <GoogleLogin
                                                 onSuccess={handleLoginSuccess}
                                                 onError={() => {
                                                 console.log('Login Failed');
                                                 }}
-                                            />
+                                            /> */}
+
+                                            <span className="google-login-icon" style={{fontSize:'20px',fontWeight:'bold'}}>G</span>
+                                            <span className="google-login-text"> Sign in with Google</span>
+
                                         </div>
                                                 
                                         <div className="col-md-6" style={{paddingTop:'10px'}}>
