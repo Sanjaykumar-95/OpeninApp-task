@@ -12,7 +12,7 @@ const Login = () => {
     };
 
     const login = useGoogleLogin({
-        onSuccess: tokenResponse => console.log(tokenResponse),
+        onSuccess: tokenResponse => navigate('/dashboard'),
       });
 
     return(
